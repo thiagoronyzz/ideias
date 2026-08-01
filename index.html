@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IdeiaTube — gerador de roteiro para Reels, TikTok e Shorts</title>
+  <meta name="description" content="Gere roteiro, legenda e hashtags para vídeos curtos em segundos. Grátis e sem cadastro." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>IdeiaTube</h1>
+      <p class="sub">Roteiro pronto para Reels, TikTok e Shorts em menos de um minuto.</p>
+    </header>
+
+    <form id="form" class="panel" autocomplete="off">
+      <label class="field">
+        <span>Sobre o que é o vídeo?</span>
+        <input id="tema" type="text" maxlength="80" placeholder="ex: treino em casa, receita de bolo, estudo para o ENEM" required />
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span>Tom</span>
+          <select id="tom">
+            <option value="educativo">Educativo</option>
+            <option value="engracado">Engraçado</option>
+            <option value="provocativo">Provocativo</option>
+            <option value="inspirador">Inspirador</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Duração</span>
+          <select id="duracao">
+            <option value="15">15s</option>
+            <option value="30" selected>30s</option>
+            <option value="60">60s</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="gerar" type="submit" class="primary">Gerar roteiro</button>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </form>
+
+    <section id="resultado" class="result" hidden>
+      <div class="result-head">
+        <h2>Roteiro gerado</h2>
+        <div class="actions">
+          <button id="copiarTudo" type="button" class="ghost">Copiar tudo</button>
+          <button id="novo" type="button" class="ghost">Gerar outro</button>
+        </div>
+      </div>
+
+      <article class="block">
+        <div class="block-head"><h3>Título</h3><button class="copy" data-target="titulo" type="button">copiar</button></div>
+        <p id="titulo" class="text"></p>
+      </article>
+
+      <article class="block">
+        <div class="block-head"><h3>Gancho (primeiros 3 segundos)</h3><button class="copy" data-target="gancho" type="button">copiar</button></div>
+        <p id="gancho" class="text"></p>
+      </article>
+
+      <article class="block">
+        <div class="block-head"><h3>Roteiro falado</h3><button class="copy" data-target="roteiro" type="button">copiar</button></div>
+        <ol id="roteiro" class="script"></ol>
+      </article>
+
+      <article class="block">
+        <div class="block-head"><h3>Texto na tela</h3><button class="copy" data-target="tela" type="button">copiar</button></div>
+        <ul id="tela" class="bullets"></ul>
+      </article>
+
+      <article class="block">
+        <div class="block-head"><h3>Legenda</h3><button class="copy" data-target="legenda" type="button">copiar</button></div>
+        <p id="legenda" class="text"></p>
+      </article>
+
+      <article class="block">
+        <div class="block-head"><h3>Hashtags</h3><button class="copy" data-target="hashtags" type="button">copiar</button></div>
+        <p id="hashtags" class="tags"></p>
+      </article>
+
+      <article class="block">
+        <div class="block-head"><h3>Chamada final (CTA)</h3><button class="copy" data-target="cta" type="button">copiar</button></div>
+        <p id="cta" class="text"></p>
+      </article>
+    </section>
+
+    <details class="config">
+      <summary>Melhorar as respostas com IA (opcional, grátis)</summary>
+      <p>O gerador funciona sem nada. Mas se quiser respostas ainda melhores, cole aqui uma chave gratuita da Groq (modelo Llama 3.1, sem custo). A chave fica salva apenas no seu navegador.</p>
+      <label class="field">
+        <span>Chave da Groq</span>
+        <input id="apikey" type="password" placeholder="gsk_..." />
+      </label>
+      <p class="hint">Crie uma em console.groq.com — o plano free cobre uso generoso e não pede cartão.</p>
+    </details>
+
+    <footer class="foot">
+      <span>Grátis para usar e publicar.</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
